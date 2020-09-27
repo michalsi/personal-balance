@@ -12,3 +12,7 @@ coverageDirectory: "coverage",
 coverageProvider: "v8",
 coverageReporters: ["text","lcov"],
 ``` 
+
+
+## GitHub Actions
+Github workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
