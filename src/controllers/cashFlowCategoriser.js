@@ -1,4 +1,4 @@
-let balance = require('../model/balance');
+let balance = require('../model/cashFlow');
 
 function addToExpenseCategory(currentCategory, currentValue) {
     balance.expense.set(currentCategory, currentValue)
