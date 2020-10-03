@@ -28,4 +28,4 @@ function getCashFlowFromCsv(csvFile) {
   return parseCsv(csvContentCleaned);
 }
 
-module.exports = exports = getCashFlowFromCsv;
+module.exports = getCashFlowFromCsv;

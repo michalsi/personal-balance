@@ -14,9 +14,9 @@ function getCategorisedCashFlow(accountItems) {
   let currentCategory;
   let currentValue;
 
-  for (const prop in accountItems) {
-    currentCategory = accountItems[prop][categoryProp];
-    currentValue = parseFloat(accountItems[prop][valueTranslated]);
+  Object.keys(accountItems).forEach((key) => {
+    currentCategory = accountItems[key][categoryProp];
+    currentValue = parseFloat(accountItems[key][valueTranslated]);
 
     if (currentValue < 0) {
       if (balance.expense.has(currentCategory)) {
@@ -33,10 +33,10 @@ function getCategorisedCashFlow(accountItems) {
       }
     }
     if (currentValue === 0) {
-      throw `Folowing entry has value 0 ! ${JSON.stringify(accountItems[prop])}`;
+      throw new Error(`Following entry has value 0 ! ${JSON.stringify(accountItems[key])}`);
     }
-  }
+  });
   return balance;
 }
 
-module.exports = exports = getCategorisedCashFlow;
+module.exports = getCategorisedCashFlow;

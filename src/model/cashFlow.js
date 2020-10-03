@@ -3,4 +3,4 @@ const cashFlow = {
   expense: new Map(),
 };
 
-module.exports = exports = cashFlow;
+module.exports = cashFlow;

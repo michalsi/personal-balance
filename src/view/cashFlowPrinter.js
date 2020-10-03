@@ -14,4 +14,4 @@ function printCashFLow(cashFlow) {
   formatCashFlow(cashFlow, 'expense');
 }
 
-module.exports = exports = printCashFLow;
+module.exports = printCashFLow;
