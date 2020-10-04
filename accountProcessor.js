@@ -7,11 +7,11 @@ function isInputFilePresent() {
   return !!argv.f;
 }
 
-try {
-  if (isInputFilePresent()) {
+if (isInputFilePresent()) {
+  try {
     const cashFlow = getCategorisedCashFlow(getCashFlowFromCsv(argv.f));
     printCashFlowToConsole(cashFlow);
-  } else console.log('Input file is required. Please provide path to valid CSV file with `-f` argument');
-} catch (e) {
-  console.error(e);
-}
+  } catch (e) {
+    console.error(e);
+  }
+} else console.log('Input file is required. Please provide path to valid CSV file with `-f` argument');
