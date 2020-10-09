@@ -7,10 +7,10 @@ function formatCashFlow(cashFlow, cashFlowPart) {
 }
 
 function printCashFLow(cashFlow) {
-  console.log('WYDATKI');
+  console.log('WPŁYWY');
   formatCashFlow(cashFlow, 'income');
 
-  console.log('WPŁYWY');
+  console.log('WYDATKI');
   formatCashFlow(cashFlow, 'expense');
 }
 
