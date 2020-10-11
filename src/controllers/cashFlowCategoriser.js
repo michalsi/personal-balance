@@ -1,42 +1,35 @@
-const balance = require('../model/cashFlow');
-
-function addToExpenseCategory(currentCategory, currentValue) {
-  balance.expense.set(currentCategory, currentValue);
-}
-
-function addToIncomeCategory(currentCategory, currentValue) {
-  balance.income.set(currentCategory, currentValue);
-}
+const CashFlow = require('../model/cashFlow');
 
 function getCategorisedCashFlow(accountItems) {
+  const cashFlow = new CashFlow();
   const categoryProp = 'Kategoria';
-  const valueTranslated = 'Kwota';
+  const valueProp = 'Kwota';
   let currentCategory;
   let currentValue;
 
   Object.keys(accountItems).forEach((key) => {
     currentCategory = accountItems[key][categoryProp];
-    currentValue = parseFloat(accountItems[key][valueTranslated]);
+    currentValue = parseFloat(accountItems[key][valueProp].replace(',', '.'));
 
     if (currentValue < 0) {
-      if (balance.expense.has(currentCategory)) {
-        addToExpenseCategory(currentCategory, balance.expense.get(currentCategory) + currentValue);
+      if (cashFlow.expense.has(currentCategory)) {
+        cashFlow.expense.set(currentCategory, cashFlow.expense.get(currentCategory) + currentValue);
       } else {
-        addToExpenseCategory(currentCategory, currentValue);
+        cashFlow.expense.set(currentCategory, currentValue);
       }
     }
     if (currentValue > 0) {
-      if (balance.income.has(currentCategory)) {
-        addToIncomeCategory(currentCategory, balance.income.get(currentCategory) + currentValue);
+      if (cashFlow.income.has(currentCategory)) {
+        cashFlow.income.set(currentCategory, cashFlow.income.get(currentCategory) + currentValue);
       } else {
-        addToIncomeCategory(currentCategory, currentValue);
+        cashFlow.income.set(currentCategory, currentValue);
       }
     }
     if (currentValue === 0) {
       throw new Error(`Following entry has value 0 ! ${JSON.stringify(accountItems[key])}`);
     }
   });
-  return balance;
+  return cashFlow;
 }
 
 module.exports = getCategorisedCashFlow;
