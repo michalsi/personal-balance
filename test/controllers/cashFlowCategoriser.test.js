@@ -111,7 +111,8 @@ describe('Cash flow categoriser tests', () => {
     expect(cashFlow.getIncome(incomeCategory)).toEqual(incomeValue);
     expect(cashFlow.getIncome(incomeCategory2)).toEqual(incomeValue2);
   });
-
+});
+describe('Cash flow categoriser negative scenarios', () => {
   test('GIVEN single account entry with zero value THEN it throws Error', () => {
     const accountEntires = [
       {
@@ -126,5 +127,36 @@ describe('Cash flow categoriser tests', () => {
     expect(() => {
       cashFlowCategoriser(accountEntires);
     }).toThrowError();
+  });
+
+  test('GIVEN single account entry with missing value THEN it throws Error', () => {
+    const accountEntires = [
+      {
+        'Data operacji': '2020-08-09',
+        'Opis operacji': 'Zero operation description',
+        Rachunek: 'My account',
+        Kategoria: 'dummy transaction',
+      },
+    ];
+
+    expect(() => {
+      cashFlowCategoriser(accountEntires);
+    }).toThrowError();
+  });
+
+  test('GIVEN single account entry with invalid value THEN it throws Error', () => {
+    const accountEntires = [
+      {
+        'Data operacji': '2020-08-09',
+        'Opis operacji': 'Zero operation description',
+        Rachunek: 'My account',
+        Kategoria: 'dummy transaction',
+        Kwota: '!Invalid - lack of amount!',
+      },
+    ];
+    const cashFlow = cashFlowCategoriser(accountEntires);
+
+    expect(cashFlow.getAllExpenses()).toEqual(0);
+    expect(cashFlow.getAllIncomes()).toEqual(0);
   });
 });
