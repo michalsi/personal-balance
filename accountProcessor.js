@@ -14,4 +14,7 @@ if (isInputFilePresent()) {
   } catch (e) {
     console.error(e);
   }
-} else console.log('Input file is required. Please provide path to valid CSV file with `-f` argument');
+} else
+  console.log(
+    'Input file is required. Please provide path to valid CSV file with `-f` argument'
+  );

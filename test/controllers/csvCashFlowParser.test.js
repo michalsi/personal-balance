@@ -32,20 +32,26 @@ test('WHEN not csv file is passed TypeError is thrown', () => {
 });
 
 test('GIVEN CSV input file with one transactions THEN one is processed and returned', () => {
-  const cashFlow = getCashFlowFromCsv(`${TEST_DATA_FILES_DIR}singleTransaction.csv`);
+  const cashFlow = getCashFlowFromCsv(
+    `${TEST_DATA_FILES_DIR}singleTransaction.csv`
+  );
   expect(cashFlow[0]).toEqual(expectedTransaction1);
   expect(cashFlow.length).toEqual(1);
 });
 
 test('GIVEN CSV input file with multiple transactions THEN all transaction returned and processed', () => {
-  const cashFlow = getCashFlowFromCsv(`${TEST_DATA_FILES_DIR}multipleTransactions.csv`);
+  const cashFlow = getCashFlowFromCsv(
+    `${TEST_DATA_FILES_DIR}multipleTransactions.csv`
+  );
   expect(cashFlow[0]).toEqual(expectedTransaction1);
   expect(cashFlow[1]).toEqual(expectedTransaction2);
   expect(cashFlow.length).toEqual(2);
 });
 
 test('GIVEN CSV input file with zero transactions THEN all nothing is returned', () => {
-  const cashFlow = getCashFlowFromCsv(`${TEST_DATA_FILES_DIR}zeroTransactions.csv`);
+  const cashFlow = getCashFlowFromCsv(
+    `${TEST_DATA_FILES_DIR}zeroTransactions.csv`
+  );
   expect(cashFlow.length).toEqual(0);
 });
 

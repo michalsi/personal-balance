@@ -5,21 +5,27 @@
   "private": true,
   "main": "csvParser.js",
   "scripts": {
-    "pretest": "eslint --ignore-path .gitignore .",
-    "test": "jest"
+    "pretest": "eslint --ignore-path .gitignore --fix . && echo 'Lint complete.'",
+    "test": "jest",
+    "watch": "watch 'clear && npm run -s test && npm run -s lint' src"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "csv-parse": "^4.12.0",
     "iconv-lite": "^0.6.2",
+    "jest-tap-reporter": "^1.9.0",
     "minimist": "^1.2.5"
   },
   "devDependencies": {
     "eslint": "^7.10.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.13.0",
     "eslint-plugin-import": "^2.22.1",
-    "jest": "^26.4.2"
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.4.2",
+    "prettier": "^2.1.2",
+    "watch": "^1.0.2"
   }
 }

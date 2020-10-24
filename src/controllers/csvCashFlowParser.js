@@ -11,7 +11,9 @@ function readCsvFileAndClean(csvFile) {
     }
     throw new TypeError(`Not a CSV input file: ${csvFile}`);
   } else {
-    throw new TypeError(`Something is wrong with path of the CSV input file: ${csvFile}`);
+    throw new TypeError(
+      `Something is wrong with path of the CSV input file: ${csvFile}`
+    );
   }
 }
 

@@ -12,21 +12,21 @@ function getCategorisedCashFlow(accountItems) {
     currentValue = parseFloat(accountItems[key][valueProp].replace(',', '.'));
 
     if (currentValue < 0) {
-      if (cashFlow.expense.has(currentCategory)) {
-        cashFlow.expense.set(currentCategory, cashFlow.expense.get(currentCategory) + currentValue);
-      } else {
-        cashFlow.expense.set(currentCategory, currentValue);
-      }
+      cashFlow.setExpense(
+        currentCategory,
+        cashFlow.getExpense(currentCategory) + currentValue
+      );
     }
     if (currentValue > 0) {
-      if (cashFlow.income.has(currentCategory)) {
-        cashFlow.income.set(currentCategory, cashFlow.income.get(currentCategory) + currentValue);
-      } else {
-        cashFlow.income.set(currentCategory, currentValue);
-      }
+      cashFlow.setIncome(
+        currentCategory,
+        cashFlow.getIncome(currentCategory) + currentValue
+      );
     }
     if (currentValue === 0) {
-      throw new Error(`Following entry has value 0 ! ${JSON.stringify(accountItems[key])}`);
+      throw new Error(
+        `Following entry has value 0 ! ${JSON.stringify(accountItems[key])}`
+      );
     }
   });
   return cashFlow;
