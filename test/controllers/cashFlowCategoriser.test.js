@@ -130,7 +130,7 @@ describe('Cash flow categoriser negative scenarios', () => {
   });
 
   test('GIVEN single account entry with missing value THEN it throws Error', () => {
-    const accountEntires = [
+    const accountEntries = [
       {
         'Data operacji': '2020-08-09',
         'Opis operacji': 'Zero operation description',
@@ -140,7 +140,7 @@ describe('Cash flow categoriser negative scenarios', () => {
     ];
 
     expect(() => {
-      cashFlowCategoriser(accountEntires);
+      cashFlowCategoriser(accountEntries);
     }).toThrowError();
   });
 
