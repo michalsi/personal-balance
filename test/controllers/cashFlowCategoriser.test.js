@@ -1,31 +1,25 @@
 const cashFlowCategoriser = require('../../src/controllers/cashFlowCategoriser');
 
-function getNumber(value) {
-  return parseFloat(value.replace(',', '.'));
-}
-
 describe('Cash flow categoriser tests', () => {
-  const expense = '-10,99 PLN';
-  const expenseValue = getNumber(expense);
+  const expenseValue = -10.99;
   const expenseCategory = 'dummy expense';
   const entryWithSingleExpense = {
     'Data operacji': '2020-08-09',
     'Opis operacji': 'Operation description',
     Rachunek: 'My account',
     Kategoria: expenseCategory,
-    Kwota: expense,
+    Kwota: expenseValue,
   };
   Object.freeze(entryWithSingleExpense);
 
-  const income = '9.98 PLN';
-  const incomeValue = getNumber(income);
+  const incomeValue = 9.98;
   const incomeCategory = 'dummy income';
   const entryWithSingleIncome = {
     'Data operacji': '2020-08-09',
     'Opis operacji': 'Operation description',
     Rachunek: 'My account',
     Kategoria: incomeCategory,
-    Kwota: income,
+    Kwota: incomeValue,
   };
   Object.freeze(entryWithSingleIncome);
 
@@ -71,15 +65,14 @@ describe('Cash flow categoriser tests', () => {
   });
 
   test('GIVEN account with multiple different expenses categories THEN cashflow values got for separate expenses', () => {
-    const expense2 = '-12,21 PLN';
-    const expenseValue2 = getNumber(expense2);
+    const expenseValue2 = -12.21;
     const expenseCategory2 = 'dummy expense2';
     const entryWithSingleExpense2 = {
       'Data operacji': '2020-08-12',
       'Opis operacji': 'Operation description 2',
       Rachunek: 'My account',
       Kategoria: expenseCategory2,
-      Kwota: expense2,
+      Kwota: expenseValue2,
     };
     Object.freeze(entryWithSingleExpense2);
 
@@ -92,15 +85,14 @@ describe('Cash flow categoriser tests', () => {
   });
 
   test('GIVEN account with multiple separate income categories THEN cashflow values got for sepatate incomes', () => {
-    const income2 = '2.22 PLN';
-    const incomeValue2 = getNumber(income2);
+    const incomeValue2 = 2.22;
     const incomeCategory2 = 'dummy income 2';
     const entryWithSingleIncome2 = {
       'Data operacji': '2020-08-09',
       'Opis operacji': 'Operation description',
       Rachunek: 'My account',
       Kategoria: incomeCategory2,
-      Kwota: income2,
+      Kwota: incomeValue2,
     };
     Object.freeze(entryWithSingleIncome2);
 
@@ -120,7 +112,7 @@ describe('Cash flow categoriser negative scenarios', () => {
         'Opis operacji': 'Zero operation description',
         Rachunek: 'My account',
         Kategoria: 'dummy transaction',
-        Kwota: '0 PLN',
+        Kwota: 0,
       },
     ];
 

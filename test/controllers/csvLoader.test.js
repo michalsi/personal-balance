@@ -1,21 +1,20 @@
-const parse = require('csv-parse');
-const getCashFlowFromCsv = require('../../src/controllers/csvCashFlowParser');
+const getCashFlowFromCsv = require('../../src/controllers/csvLoader');
 
 const TEST_DATA_FILES_DIR = 'test/controllers/data/';
 
 const expectedTransaction1 = {
   'Data operacji': '2020-08-07',
   'Opis operacji': 'Test Transaction ',
-  Rachunek: ' Test Account ',
+  Rachunek: 'Test Account',
   Kategoria: 'Zdrowie i uroda',
   Kwota: '-41,25 PLN',
 };
 
 const expectedTransaction2 = {
   'Data operacji': '2020-08-08',
-  'Opis operacji': 'Test Transaction 2 ',
-  Rachunek: ' Test Account 2 ',
-  Kategoria: 'Żywnośc',
+  'Opis operacji': 'Test Transaction 2',
+  Rachunek: 'Test Account 2',
+  Kategoria: 'Żywność',
   Kwota: '-100,25 PLN',
 };
 
@@ -53,10 +52,4 @@ test('GIVEN CSV input file with zero transactions THEN all nothing is returned',
     `${TEST_DATA_FILES_DIR}zeroTransactions.csv`
   );
   expect(cashFlow.length).toEqual(0);
-});
-
-test('WHEN not csv file is passed TypeError is thrown', () => {
-  expect(() => {
-    getCashFlowFromCsv(`${TEST_DATA_FILES_DIR}invalidTransaction.csv`);
-  }).toThrow(parse.CsvError);
 });

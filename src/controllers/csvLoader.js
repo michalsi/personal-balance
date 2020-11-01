@@ -6,7 +6,7 @@ function readCsvFileAndClean(csvFile) {
   if (fs.existsSync(csvFile)) {
     if (csvFile.match(/\.(csv)$/)) {
       const csvContent = fs.readFileSync(csvFile);
-      const csvContentDecoded = iconv.decode(csvContent, 'ISO-8859-2');
+      const csvContentDecoded = iconv.decode(csvContent, 'UTF-32');
       return csvContentDecoded.replace(/#/g, '').replace(/;;/g, '');
     }
     throw new TypeError(`Not a CSV input file: ${csvFile}`);
