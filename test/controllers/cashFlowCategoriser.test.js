@@ -148,7 +148,7 @@ describe('Cash flow categoriser negative scenarios', () => {
     ];
     const cashFlow = cashFlowCategoriser(accountEntires);
 
-    expect(cashFlow.getAllExpenses()).toEqual(0);
-    expect(cashFlow.getAllIncomes()).toEqual(0);
+    expect(cashFlow.getAllExpensesValues()).toEqual(0);
+    expect(cashFlow.getAllIncomesValues()).toEqual(0);
   });
 });

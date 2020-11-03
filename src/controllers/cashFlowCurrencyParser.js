@@ -10,8 +10,6 @@ function parseCashFlowCurrency(accountItems) {
     );
   });
 
-  console.log('--------------');
-  console.log(accountItemsParsed);
   return accountItemsParsed;
 }
 

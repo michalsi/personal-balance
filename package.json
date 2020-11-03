@@ -9,7 +9,7 @@
     "test": "jest",
     "watch": "watch 'clear && npm run -s test && npm run -s lint' src"
   },
-  "author": "",
+  "author": "Michał",
   "license": "ISC",
   "dependencies": {
     "csv-parse": "^4.12.0",

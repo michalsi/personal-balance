@@ -26,8 +26,7 @@ function parseCsv(input) {
 }
 
 function getCashFlowFromCsv(csvFile) {
-  const csvContentCleaned = readCsvFileAndClean(csvFile);
-  return parseCsv(csvContentCleaned);
+  return parseCsv(readCsvFileAndClean(csvFile));
 }
 
 module.exports = getCashFlowFromCsv;

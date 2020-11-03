@@ -28,12 +28,12 @@ class cashFlow {
     return expense || 0;
   }
 
-  getAllExpenses() {
+  getAllExpensesValues() {
     const expenses = [...this.expense.values()];
     return expenses.length ? expenses : 0;
   }
 
-  getAllIncomes() {
+  getAllIncomesValues() {
     const incomes = [...this.income.values()];
     return incomes.length ? incomes : 0;
   }

@@ -3,8 +3,8 @@ const CashFlow = require('../../src/model/cashFlow');
 describe('Cash Flow model tests', () => {
   test('GIVEN cash flow has been initialised THEN income and expense are set to 0', () => {
     const cashFlow = new CashFlow();
-    expect(cashFlow.getAllExpenses()).toEqual(0);
-    expect(cashFlow.getAllIncomes()).toEqual(0);
+    expect(cashFlow.getAllExpensesValues()).toEqual(0);
+    expect(cashFlow.getAllIncomesValues()).toEqual(0);
   });
 
   test('GIVEN cash flow has been initialised THEN other properties can not be added to the object', () => {
@@ -42,7 +42,7 @@ describe('Cash Flow model tests', () => {
     cashFlow.setExpense(expenseCategory2, 20);
     expect(cashFlow.getExpense(expenseCategory1)).toEqual(10);
     expect(cashFlow.getExpense(expenseCategory2)).toEqual(20);
-    expect(cashFlow.getAllExpenses()).toEqual([10, 20]);
+    expect(cashFlow.getAllExpensesValues()).toEqual([10, 20]);
   });
 
   test('GIVEN cash flow has been initialised THEN multiple income categories can be added', () => {
@@ -53,6 +53,6 @@ describe('Cash Flow model tests', () => {
     cashFlow.setIncome(incomeCategory1, 30);
     cashFlow.setIncome(incomeCategory2, 40);
 
-    expect(cashFlow.getAllIncomes()).toEqual([30, 40]);
+    expect(cashFlow.getAllIncomesValues()).toEqual([30, 40]);
   });
 });

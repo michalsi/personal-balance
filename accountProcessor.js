@@ -2,6 +2,7 @@ const argv = require('minimist')(process.argv.slice(2));
 const getCashFlowFromCsv = require('./src/controllers/csvLoader');
 const getCategorisedCashFlow = require('./src/controllers/cashFlowCategoriser');
 const printCashFlowToConsole = require('./src/view/cashFlowPrinter');
+const getCashFlowAggregated = require('./src/controllers/expensesAggregator');
 const getCashFlowWithParsedCurrency = require('./src/controllers/cashFlowCurrencyParser');
 
 function isInputFilePresent() {
@@ -13,6 +14,8 @@ if (isInputFilePresent()) {
     const cashFlow = getCategorisedCashFlow(
       getCashFlowWithParsedCurrency(getCashFlowFromCsv(argv.f))
     );
+
+    getCashFlowAggregated(cashFlow);
     printCashFlowToConsole(cashFlow);
   } catch (e) {
     console.error(e);
