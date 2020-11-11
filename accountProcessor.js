@@ -1,10 +1,11 @@
 const argv = require('minimist')(process.argv.slice(2));
 const getCashFlowFromCsv = require('./src/controllers/csvLoader');
 const getCategorisedCashFlow = require('./src/controllers/cashFlowCategoriser');
-const getCashFlowAggregated = require('./src/controllers/expensesAggregator');
+const getExpensesAggregated = require('./src/controllers/expensesAggregator');
 const getCashFlowWithParsedCurrency = require('./src/controllers/cashFlowCurrencyParser');
 const summariseGroupedExpenses = require('./src/controllers/expensesGroupsSummariser');
 const printExpenses = require('./src/view/printSummarisedExpenses');
+const printIncomes = require('./src/view/printIncomes');
 
 function isInputFilePresent() {
   return !!argv.f;
@@ -16,10 +17,10 @@ if (isInputFilePresent()) {
       getCashFlowWithParsedCurrency(getCashFlowFromCsv(argv.f))
     );
 
-    const groupedExpenses = getCashFlowAggregated(cashFlow);
+    const groupedExpenses = getExpensesAggregated(cashFlow);
     const summarisedExpenses = summariseGroupedExpenses(groupedExpenses);
     printExpenses(summarisedExpenses, groupedExpenses);
-    // printCashFlowToConsole(cashFlow);
+    printIncomes(cashFlow);
   } catch (e) {
     console.error(e);
   }

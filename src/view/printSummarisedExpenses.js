@@ -1,16 +1,18 @@
+const formatCurrency = require('./currencyFormater');
+const sectionPrinter = require('./sectionPrinter');
+
 function printSummarisedExpenses(summarisedExpenses, groupedExpenses) {
-  console.log('EXPENSES SUMMARY:');
-  console.log('===============================');
+  sectionPrinter.printHeader('EXPENSES SUMMARY:');
   Object.entries(summarisedExpenses).forEach(([category, valueSummarised]) => {
-    console.log(`${category} \t ${valueSummarised}`);
+    console.log(`${category} \t ${formatCurrency(valueSummarised)}`);
   });
-  console.log('===============================\n');
+  sectionPrinter.printFooter();
 
   Object.entries(groupedExpenses).forEach(([category]) => {
     console.log(category.toUpperCase());
 
     groupedExpenses[category].forEach((groupedValue, groupCategory) => {
-      console.log(`${groupCategory} \t ${groupedValue}`);
+      console.log(`${groupCategory} \t ${formatCurrency(groupedValue)}`);
     });
     console.log('');
   });

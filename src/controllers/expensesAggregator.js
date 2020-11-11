@@ -5,9 +5,7 @@ function aggregateExpenses(cashFlow) {
   const cashFlowGroups = new CashFlowGroups();
   const groupedExpenses = new GroupedExpenses();
 
-  const expenses = cashFlow.expense;
-
-  expenses.forEach((value, key) => {
+  cashFlow.expense.forEach((value, key) => {
     if (cashFlowGroups.getRachunkiCategories().includes(key)) {
       groupedExpenses.addToRachunki(key, value);
     } else if (cashFlowGroups.getCodzienneWydatkiCategories().includes(key)) {
