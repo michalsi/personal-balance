@@ -1,12 +1,12 @@
 const formatCurrency = require('./currencyFormater');
-const sectionPrinter = require('./sectionPrinter');
+const { printHeader, printFooter } = require('./sectionPrinter');
 
 function printSummarisedExpenses(summarisedExpenses, groupedExpenses) {
-  sectionPrinter.printHeader('EXPENSES SUMMARY:');
+  printHeader('EXPENSES SUMMARY:');
   Object.entries(summarisedExpenses).forEach(([category, valueSummarised]) => {
     console.log(`${category} \t ${formatCurrency(valueSummarised)}`);
   });
-  sectionPrinter.printFooter();
+  printFooter();
 
   Object.entries(groupedExpenses).forEach(([category]) => {
     console.log(category.toUpperCase());

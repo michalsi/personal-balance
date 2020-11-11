@@ -1,12 +1,9 @@
-const printHeader = (text) => {
+exports.printHeader = (text) => {
   console.log('--------------------------------');
   console.log(text);
   console.log('--------------------------------');
 };
 
-const printFooter = () => {
+exports.printFooter = () => {
   console.log('--------------------------------');
 };
-
-exports.printHeader = printHeader;
-exports.printFooter = printFooter;

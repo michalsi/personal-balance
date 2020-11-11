@@ -1,12 +1,12 @@
 const formatCurrency = require('./currencyFormater');
-const sectionPrinter = require('./sectionPrinter');
+const { printHeader, printFooter } = require('./sectionPrinter');
 
 function printIncomes(cashFlow) {
-  sectionPrinter.printHeader('INCOME SUMMARY: ');
+  printHeader('INCOME SUMMARY: ');
   cashFlow.income.forEach((income, value) => {
     console.log(`${value} \t ${formatCurrency(income)}`);
   });
-  sectionPrinter.printFooter();
+  printFooter();
 }
 
 module.exports = printIncomes;
