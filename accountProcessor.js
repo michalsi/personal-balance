@@ -4,8 +4,9 @@ const getCategorisedCashFlow = require('./src/controllers/cashFlowCategoriser');
 const getExpensesAggregated = require('./src/controllers/expensesAggregator');
 const getCashFlowWithParsedCurrency = require('./src/controllers/cashFlowCurrencyParser');
 const summariseGroupedExpenses = require('./src/controllers/expensesGroupsSummariser');
-const printExpenses = require('./src/view/printSummarisedExpenses');
-const printIncomes = require('./src/view/printIncomes');
+const printExpenses = require('./src/view/summarisedExpensesPrinter');
+const printIncomes = require('./src/view/incomePrinter');
+const printIrrelevantCategories = require('./src/view/irrelevantCategoriesPrinter');
 
 function isInputFilePresent() {
   return !!argv.f;
@@ -21,6 +22,7 @@ if (isInputFilePresent()) {
     const summarisedExpenses = summariseGroupedExpenses(groupedExpenses);
     printExpenses(summarisedExpenses, groupedExpenses);
     printIncomes(cashFlow);
+    printIrrelevantCategories(cashFlow);
   } catch (e) {
     console.error(e);
   }

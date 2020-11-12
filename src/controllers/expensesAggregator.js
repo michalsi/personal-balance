@@ -1,4 +1,4 @@
-const CashFlowGroups = require('../model/cashFlowGroups');
+const CashFlowGroups = require('../model/expensesGroupCategories');
 const GroupedExpenses = require('../model/groupedExpenses');
 
 function aggregateExpenses(cashFlow) {

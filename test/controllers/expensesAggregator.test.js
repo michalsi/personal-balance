@@ -19,6 +19,5 @@ describe('Cash Flow Aggregator tests', () => {
     expect(aggregatedCashFlow.pomocWsparcie.size).toBe(0);
     expect(aggregatedCashFlow.zachcianki.size).toBe(0);
     expect(aggregatedCashFlow.reszta.size).toBe(0);
-    expect(aggregatedCashFlow.przelewWlasny.size).toBe(0);
   });
 });

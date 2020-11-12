@@ -6,7 +6,6 @@ class groupedExpenses {
     this.pomocWsparcie = new Map();
     this.zachcianki = new Map();
     this.reszta = new Map();
-    this.przelewWlasny = new Map();
   }
 
   addToRachunki(description, value) {
@@ -37,35 +36,6 @@ class groupedExpenses {
   addToReszta(description, value) {
     this.reszta.set(description, value);
     return this;
-  }
-
-  addToPrzelewWlasny(description, value) {
-    this.przelewWlasny.set(description, value);
-    return this;
-  }
-
-  getGroup1() {
-    return this.rachunki;
-  }
-
-  getGroup1Categories() {
-    return this.rachunki.keys();
-  }
-
-  getGroup2Categories() {
-    return this.codzienneWydatki.keys();
-  }
-
-  getGroup3Categories() {
-    return this.oszczednosci.keys();
-  }
-
-  getGroup4Categories() {
-    return this.pomocWsparcie.keys();
-  }
-
-  getGroup5Categories() {
-    return this.zachcianki.keys();
   }
 }
 

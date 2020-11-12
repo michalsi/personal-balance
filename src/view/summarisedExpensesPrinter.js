@@ -1,8 +1,11 @@
 const formatCurrency = require('./currencyFormater');
 const { printHeader, printFooter } = require('./sectionPrinter');
 
-function printSummarisedExpenses(summarisedExpenses, groupedExpenses) {
-  printHeader('EXPENSES SUMMARY:');
+function summarisedExpensesPrinter(summarisedExpenses, groupedExpenses) {
+  const summary = Object.values(summarisedExpenses).reduce(
+    (result, value) => result + value
+  );
+  printHeader('EXPENSES SUMMARY', summary);
   Object.entries(summarisedExpenses).forEach(([category, valueSummarised]) => {
     console.log(`${category} \t ${formatCurrency(valueSummarised)}`);
   });
@@ -18,4 +21,4 @@ function printSummarisedExpenses(summarisedExpenses, groupedExpenses) {
   });
 }
 
-module.exports = printSummarisedExpenses;
+module.exports = summarisedExpensesPrinter;

@@ -1,4 +1,4 @@
-class cashFlowGroups {
+class expensesGroupCategories {
   constructor() {
     this.rachunki = [
       'TV, internet, telefon',
@@ -28,9 +28,8 @@ class cashFlowGroups {
       'Edukacja',
     ];
     this.reszta = ['Wypłata gotówki'];
-    this.przelewWlasny = ['Przelew własny'];
 
-    if (this.constructor === cashFlowGroups) {
+    if (this.constructor === expensesGroupCategories) {
       Object.freeze(this);
     }
   }
@@ -60,8 +59,8 @@ class cashFlowGroups {
   }
 
   getPrzelewWlasnyCategories() {
-    return this.przelewWlasny;
+    return this.niewazne;
   }
 }
 
-module.exports = cashFlowGroups;
+module.exports = expensesGroupCategories;

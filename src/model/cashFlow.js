@@ -2,6 +2,7 @@ class cashFlow {
   constructor() {
     this.income = new Map();
     this.expense = new Map();
+    this.irrelevant = new Map();
 
     if (this.constructor === cashFlow) {
       Object.freeze(this);
@@ -18,6 +19,11 @@ class cashFlow {
     return this;
   }
 
+  setIrrelevant(description, amount) {
+    this.irrelevant.set(description, amount);
+    return this;
+  }
+
   getIncome(description) {
     const income = this.income.get(description);
     return income || 0;
@@ -26,6 +32,11 @@ class cashFlow {
   getExpense(description) {
     const expense = this.expense.get(description);
     return expense || 0;
+  }
+
+  getIrrelevant(description) {
+    const irrelevant = this.irrelevant.get(description);
+    return irrelevant || 0;
   }
 
   getAllExpensesValues() {

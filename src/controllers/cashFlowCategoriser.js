@@ -1,7 +1,9 @@
 const CashFlow = require('../model/cashFlow');
+const IrrelevantGroup = require('../model/irrelevantGroup');
 
 function getCategorisedCashFlow(accountItems) {
   const cashFlow = new CashFlow();
+  const irrelevantGroup = new IrrelevantGroup();
   const categoryProp = 'Kategoria';
   const valueProp = 'Kwota';
   let currentCategory;
@@ -11,19 +13,22 @@ function getCategorisedCashFlow(accountItems) {
     currentCategory = accountItems[key][categoryProp];
     currentValue = accountItems[key][valueProp];
     if (currentValue) {
-      if (currentValue < 0) {
+      if (irrelevantGroup.getNiewazneCategories().includes(currentCategory)) {
+        cashFlow.setIrrelevant(
+          currentCategory,
+          cashFlow.getIrrelevant(currentCategory) + currentValue
+        );
+      } else if (currentValue < 0) {
         cashFlow.setExpense(
           currentCategory,
           cashFlow.getExpense(currentCategory) + currentValue
         );
-      }
-      if (currentValue > 0) {
+      } else if (currentValue > 0) {
         cashFlow.setIncome(
           currentCategory,
           cashFlow.getIncome(currentCategory) + currentValue
         );
-      }
-      if (currentValue === 0) {
+      } else if (currentValue === 0) {
         throw new Error(
           `Following entry has value 0 ! ${JSON.stringify(accountItems[key])}`
         );

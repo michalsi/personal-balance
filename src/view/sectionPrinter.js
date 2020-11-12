@@ -1,6 +1,8 @@
-exports.printHeader = (text) => {
+const formatCurrency = require('./currencyFormater');
+
+exports.printHeader = (header, ammount) => {
   console.log('--------------------------------');
-  console.log(text);
+  console.log(`${header} \t ${formatCurrency(ammount)}`);
   console.log('--------------------------------');
 };
 
