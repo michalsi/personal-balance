@@ -1,6 +1,17 @@
 const CashFlow = require('../model/cashFlow');
 const IrrelevantGroup = require('../model/irrelevantGroup');
 
+function sortIncome(cashFlow) {
+  const sortedIncome = new Map(
+    [...cashFlow.income].sort((a, b) => b[1] - a[1])
+  );
+  return {
+    income: sortedIncome,
+    expense: cashFlow.expense,
+    irrelevant: cashFlow.irrelevant,
+  };
+}
+
 function getCategorisedCashFlow(accountItems) {
   const cashFlow = new CashFlow();
   const irrelevantGroup = new IrrelevantGroup();
@@ -38,7 +49,7 @@ function getCategorisedCashFlow(accountItems) {
         `${accountItems[key]} doesn't have ${categoryProp} property!`
       );
   });
-  return cashFlow;
+  return sortIncome(cashFlow);
 }
 
 module.exports = getCategorisedCashFlow;
