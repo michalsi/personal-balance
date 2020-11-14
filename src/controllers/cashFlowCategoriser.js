@@ -5,11 +5,8 @@ function sortIncome(cashFlow) {
   const sortedIncome = new Map(
     [...cashFlow.income].sort((a, b) => b[1] - a[1])
   );
-  return {
-    income: sortedIncome,
-    expense: cashFlow.expense,
-    irrelevant: cashFlow.irrelevant,
-  };
+  cashFlow.replaceAllIncome(sortedIncome);
+  return cashFlow;
 }
 
 function getCategorisedCashFlow(accountItems) {

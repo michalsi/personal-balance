@@ -4,6 +4,7 @@ const getCategorisedCashFlow = require('./src/controllers/cashFlowCategoriser');
 const getExpensesAggregated = require('./src/controllers/expensesAggregator');
 const getCashFlowWithParsedCurrency = require('./src/controllers/cashFlowCurrencyParser');
 const summariseGroupedExpenses = require('./src/controllers/expensesGroupsSummariser');
+const printBalance = require('./src/view/balancePrinter');
 const printExpenses = require('./src/view/summarisedExpensesPrinter');
 const printIncomes = require('./src/view/incomePrinter');
 const printIrrelevantCategories = require('./src/view/irrelevantCategoriesPrinter');
@@ -20,6 +21,7 @@ if (isInputFilePresent()) {
 
     const groupedExpenses = getExpensesAggregated(cashFlow);
     const summarisedExpenses = summariseGroupedExpenses(groupedExpenses);
+    printBalance(cashFlow);
     printExpenses(summarisedExpenses, groupedExpenses);
     printIncomes(cashFlow);
     printIrrelevantCategories(cashFlow);

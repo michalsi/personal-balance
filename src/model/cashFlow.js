@@ -14,6 +14,14 @@ class cashFlow {
     return this;
   }
 
+  replaceAllIncome(newIncome) {
+    this.income.clear();
+    newIncome.forEach((value, key) => {
+      this.setIncome(key, value);
+    });
+    return this;
+  }
+
   setExpense(description, amount) {
     this.expense.set(description, amount);
     return this;
